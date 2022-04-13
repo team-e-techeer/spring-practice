@@ -1,4 +1,4 @@
-package net.schoolvery.schoolveryserver.dto.response;
+package net.schoolvery.schoolveryserver.domain.hello.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class HelloResponseDto {
+public class HelloRequestDto {
 
-    private String result;
+    private String name;
 }

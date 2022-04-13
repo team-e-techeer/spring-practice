@@ -1,9 +1,8 @@
-package net.schoolvery.schoolveryserver.controller;
+package net.schoolvery.schoolveryserver.domain.hello.controller;
 
-import net.schoolvery.schoolveryserver.dto.request.HelloRequestDto;
-import net.schoolvery.schoolveryserver.dto.response.HelloResponseDto;
+import net.schoolvery.schoolveryserver.domain.hello.dto.request.HelloRequestDto;
+import net.schoolvery.schoolveryserver.domain.hello.dto.response.HelloResponseDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
