@@ -1,0 +1,12 @@
+rootProject.name = 'schoolvery-server'
+include 'configuration'
+include 'adapters'
+include 'application'
+include 'common'
+include 'testdata'
+include 'persistence'
+include 'adapters:persisrence'
+findProject(':adapters:persisrence')?.name = 'persisrence'
+include 'adapters:web'
+findProject(':adapters:web')?.name = 'web'
+
