@@ -1,0 +1,12 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'schoolvery-server'
+include 'module-common'
+include 'module-user'
+include 'module-board'
+include 'module-chat'
+
