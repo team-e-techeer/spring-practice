@@ -1,17 +1,30 @@
 package net.schoolvery.schoolveryserver.domain.user.service;
 
+import net.schoolvery.schoolveryserver.domain.user.entity.User;
+import net.schoolvery.schoolveryserver.domain.user.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 @Service
 public class UserService {
+    @Autowired
+    UserRepository userRepository;
 
-    public Map<String, String> getTest() {
-        Map<String, String> res = new HashMap<>();
-        res.put("test", "hi");
+    public List<User> getAllUsers(){
+        return userRepository.getAllUsers();
+    }
 
-        return res;
+    public User getUserByUserId(String userId){
+        return userRepository.getUserByUserId(userId);
+    }
+
+    public void modifyUser(String userId, User user){
+        userRepository.updateUser(userId, user);
+    }
+
+    public void removeUser(String userId){
+        userRepository.deleteUser(userId);
     }
 }
