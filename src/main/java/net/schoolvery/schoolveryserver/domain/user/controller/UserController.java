@@ -1,30 +1,41 @@
 package net.schoolvery.schoolveryserver.domain.user.controller;
 
+import net.schoolvery.schoolveryserver.domain.user.entity.User;
 import net.schoolvery.schoolveryserver.domain.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/users")
 public class UserController {
-
     @Autowired
     private UserService userService;
 
     @GetMapping("")
-    public String test(){
-        return "root url call";
+    public List<User> getAllUsers(){
+        return userService.getAllUsers();
     }
 
-    @GetMapping("/test")
-    public Map<String, String> testMethod() {
-        Map<String, String> res = this.userService.getTest();
+    @GetMapping("/{userid}")
+    public User getUserByUserId(@PathVariable String userid){
+        return userService.getUserByUserId(userid);
+    }
 
-        return res;
+    @PostMapping("")
+    public User registerUser(@RequestBody User user){
+        return userService.registerUser(user);
+    }
+
+    @PutMapping("/{userid}")
+    public void modifyUser(@PathVariable String userid, @RequestBody User user){
+        userService.modifyUser(userid, user);
+    }
+
+    @DeleteMapping("/{userid}")
+    public void removeUser(@PathVariable String userid){
+        userService.removeUser(userid);
     }
 
 }
