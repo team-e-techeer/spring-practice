@@ -20,6 +20,10 @@ public class UserService {
         return userRepository.getUserByUserId(userId);
     }
 
+    public User registerUser(User user){
+        return userRepository.insertUser(user);
+    }
+
     public void modifyUser(String userId, User user){
         userRepository.updateUser(userId, user);
     }
