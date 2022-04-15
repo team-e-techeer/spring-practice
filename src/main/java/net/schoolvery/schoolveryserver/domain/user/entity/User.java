@@ -3,6 +3,7 @@ package net.schoolvery.schoolveryserver.domain.user.entity;
 
 import com.sun.istack.NotNull;
 import lombok.*;
+import net.schoolvery.schoolveryserver.domain.model.BaseEntity;
 
 import javax.persistence.*;
 
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
