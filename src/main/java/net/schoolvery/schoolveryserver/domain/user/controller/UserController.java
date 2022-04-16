@@ -1,65 +1,56 @@
 package net.schoolvery.schoolveryserver.domain.user.controller;
 
+import lombok.RequiredArgsConstructor;
+import net.schoolvery.schoolveryserver.domain.user.config.BaseResponse;
 import net.schoolvery.schoolveryserver.domain.user.dto.request.UserCreateDto;
-import net.schoolvery.schoolveryserver.domain.user.entity.User;
-import net.schoolvery.schoolveryserver.domain.user.repository.UserRopository;
+import net.schoolvery.schoolveryserver.domain.user.dto.request.UserUpdateDto;
+import net.schoolvery.schoolveryserver.domain.user.dto.response.GetUserResponseDto;
+import net.schoolvery.schoolveryserver.domain.user.dto.response.UserResponseDto;
 import net.schoolvery.schoolveryserver.domain.user.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
+
 
 @RestController
 @RequestMapping("/api/v1/users")
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
-    private final UserRopository userRopository;
 
-    @Autowired
-    public UserController(UserService userService, UserRopository userRopository) {
-        this.userService = userService;
-        this.userRopository = userRopository;
-    }
-
-    // Create
+    // create user
     @ResponseBody
-    @PostMapping("/signup")
-    public ResponseEntity<Void> CreateUser(@RequestBody UserCreateDto userCreateDto) {
+    @PostMapping("/sign-up")
+    public BaseResponse<UserResponseDto> createUser(@RequestBody UserCreateDto userCreateDto) {
+        UserResponseDto userResponseDto = userService.createUser(userCreateDto);
 
+        return new BaseResponse<>(userResponseDto);
     }
 
 
-    // Read
+    // read user
     @ResponseBody
     @GetMapping("")
-    public List<User> ReadUser(UserService userService) {
+    public BaseResponse<List<GetUserResponseDto>> getUsers(@RequestParam(required = false) String nickname) {
+        List<GetUserResponseDto> getUserResponseDtoList = userService.getUser();
 
-        return userRopository.findAll();
-
+        return new BaseResponse<>(getUserResponseDtoList);
     }
 
-    // Update
+
+    // update user
     @ResponseBody
-    @PatchMapping("/{user-id}")
-    public String UpdateUser(@PathVariable("user-id") UUID userId) {
+    @PostMapping("/{useridx}")
+    public BaseResponse<String> modifyUser(@PathVariable("useridx") int id, UserUpdateDto userUpdateDto) {
+        UserUpdateDto userUpdateDto1 = new UserUpdateDto(userUpdateDto.getId(), userUpdateDto.getName(), userUpdateDto.getNickname());
+        userService.modifyUser(userUpdateDto1);
 
-        return "수정되었습니다.";
-    }
+        String result = "회원 정보 수정완료";
 
-
-    //Delete
-    @ResponseBody
-    @DeleteMapping("/{user-id}")
-    public String DeleteUser(@PathVariable("user-id") UUID userId) {
-
-
-        return "삭제되었습니다.";
+        return new BaseResponse<>(result);
 
     }
 
-
-
+    //delete user
 }
