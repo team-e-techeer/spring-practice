@@ -1,7 +1,14 @@
-## check each branch 
+## To Do
 
-- single-module with domain
-- multi-module with domain
-- single-module with hexagonal
-- multi-module with hexagonal
-- RESTful API example template
+- [x] Creat User
+- [x] Get All User
+- [x] Get All User - Apply Pagination
+- [x] Get User By Id
+- [x] Update User
+- [x] Delet User
+- [x] Apply BaseEntity
+- [ ] Add Exception Handler
+- [ ] Add User column
+- [ ] Add Test Case
+- [ ] Add Swagger
+- [ ] Search MapStruct
