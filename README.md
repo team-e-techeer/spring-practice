@@ -5,7 +5,7 @@
 - [x] Get All User - Apply Pagination
 - [x] Get User By Id
 - [x] Update User
-- [x] Delet User
+- [x] Delete User
 - [x] Apply BaseEntity
 - [ ] Add Exception Handler
 - [ ] Add User column

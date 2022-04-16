@@ -1,6 +1,5 @@
 package net.schoolvery.schoolveryserver.domain.user.dto.response;
 
-
 import com.sun.istack.NotNull;
 import lombok.*;
 import javax.validation.constraints.Size;
