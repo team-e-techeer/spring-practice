@@ -13,15 +13,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class UserResponseDto {
 
-    private UUID id;
-
-    private String name;
-    private String nickname;
-    private int phone;
-    private int student_id;
-    private String school;
-    private String email;
-    private String password;
-
+    private int id;
 
 }

@@ -8,12 +8,10 @@ import lombok.*;
 @AllArgsConstructor
 public class UserUpdateDto {
 
+    int id;
+
     private String name;
     private String nickname;
-    private int phone;
-    private int student_id;
-    private String school;
-    private String email;
-    private String password;
+
 
 }
