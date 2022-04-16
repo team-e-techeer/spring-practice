@@ -3,7 +3,7 @@ package net.schoolvery.schoolveryserver.domain.user.entity;
 
 import com.sun.istack.NotNull;
 import lombok.*;
-import net.schoolvery.schoolveryserver.domain.model.BaseEntity;
+import net.schoolvery.schoolveryserver.global.common.entity.BaseEntity;
 
 import javax.persistence.*;
 

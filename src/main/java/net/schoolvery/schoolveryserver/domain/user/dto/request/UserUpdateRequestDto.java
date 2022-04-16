@@ -1,4 +1,4 @@
-package net.schoolvery.schoolveryserver.domain.user.dto;
+package net.schoolvery.schoolveryserver.domain.user.dto.request;
 
 import com.sun.istack.NotNull;
 import lombok.*;
@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class UserDto {
+public class UserUpdateRequestDto {
 
     @NotNull
     @Size(max = 255)
@@ -19,4 +19,3 @@ public class UserDto {
     private String lastName;
 
 }
-
