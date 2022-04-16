@@ -12,3 +12,4 @@
 - [ ] Add Test Case
 - [ ] Add Swagger
 - [ ] Search MapStruct
+- [ ] Add logging library
