@@ -29,10 +29,9 @@ public class UserService {
     }
 
     // User update
-    public int modifyUser(UserUpdateDto userUpdateDto) {
+    public void modifyUser(UserUpdateDto userUpdateDto) {
         int result = userRepository.modifyUserName(userUpdateDto);
 
-        return result;
     }
 
 
