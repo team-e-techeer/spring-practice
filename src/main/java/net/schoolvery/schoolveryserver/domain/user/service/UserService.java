@@ -44,6 +44,11 @@ public class UserService {
     }
 
     // User delete
+    public int withdraw(int id) throws UserNotFoundException {
+        int withdrawUserCnt = userRepository.deleteUser(id);
+
+        return withdrawUserCnt;
+    }
 
 
 }
