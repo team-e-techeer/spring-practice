@@ -65,8 +65,7 @@ public class UserRepository {
 
     // User Read
     public List<GetUserResponseDto> getUser() {
-        String getUserQuery = "SELECT U.id, U.name, U.nickname, U.phone, U.student_id, U.school, U.email, U.password," +
-                "FROM User U";
+        String getUserQuery = "SELECT id, name, nickname, phone, student_id, school, email, password FROM User";
 
         return this.jdbcTemplate.query(getUserQuery,
                 (rs, rowNum) -> new GetUserResponseDto(
@@ -81,6 +80,15 @@ public class UserRepository {
                 ));
 
     }
+
+    public int deleteUser(int id) {
+        String deleteUserQuery = "DELETE FROM User WHERE id = ?";
+        int getUserParams = id;
+
+        return this.jdbcTemplate.update(deleteUserQuery, getUserParams);
+    }
+
+
 
 
 
