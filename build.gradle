@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.6.6'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id "org.asciidoctor.jvm.convert" version "3.3.2" // asciidoctor 추가
 }
 
 group = 'net.schoolvery'
@@ -18,6 +19,41 @@ repositories {
 	mavenCentral()
 }
 
+// snippetsDir 설정하기
+ext {
+	snippetsDir = file('build/generated-snippets')
+}
+
+// bootjar 설정하기
+bootJar {
+	dependsOn asciidoctor
+	copy {
+		from "${asciidoctor.outputDir}"
+		into 'BOOT-INF/classes/static/docs'
+	}
+}
+
+// asciidoctor 설정
+asciidoctor {
+	dependsOn test
+	inputs.dir snippetsDir
+}
+
+
+asciidoctor.doFirst {
+	delete file('src/main/resources/static/docs')
+}
+
+task copyDocument(type: Copy) {
+	dependsOn asciidoctor
+	from file("build/docs/asciidoc")
+	into file("src/main/resources/static/docs")
+}
+
+build {
+	dependsOn copyDocument
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
@@ -30,6 +66,14 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+
+	// mockmvc 추가
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+
+
+	//spring-doc ( Swagger )
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.6'
+
 }
 
 tasks.named('test') {
