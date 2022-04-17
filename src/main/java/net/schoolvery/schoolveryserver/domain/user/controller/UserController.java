@@ -19,7 +19,7 @@ public class UserController {
 
     private final UserService userService;
 
-    // create user
+    // create user ( success )
     @ResponseBody
     @PostMapping("/sign-up")
     public BaseResponse<UserResponseDto> createUser(@RequestBody UserCreateDto userCreateDto) {
@@ -29,7 +29,7 @@ public class UserController {
     }
 
 
-    // read user
+    // read user ( succes )
     @ResponseBody
     @GetMapping("")
     public BaseResponse<List<GetUserResponseDto>> getUsers(@RequestParam(required = false) String nickname) {
@@ -41,9 +41,9 @@ public class UserController {
 
     // update user
     @ResponseBody
-    @PostMapping("/{useridx}")
-    public BaseResponse<String> modifyUser(@PathVariable("useridx") int id, UserUpdateDto userUpdateDto) {
-        UserUpdateDto userUpdateDto1 = new UserUpdateDto(userUpdateDto.getId(), userUpdateDto.getName(), userUpdateDto.getNickname());
+    @PostMapping("/{id}")
+    public BaseResponse<String> modifyUser(@PathVariable("id") int id, UserUpdateDto userUpdateDto) {
+        UserUpdateDto userUpdateDto1 = new UserUpdateDto(id, userUpdateDto.getNickname());
         userService.modifyUser(userUpdateDto1);
 
         String result = "회원 정보 수정완료";
@@ -52,5 +52,12 @@ public class UserController {
 
     }
 
-    //delete user
+    //delete user ( success )
+    @ResponseBody
+    @PostMapping("/delete/{id}")
+    public BaseResponse<Integer> withdrawUser(@PathVariable("id") int id) {
+        int user = userService.withdraw(id);
+
+        return new BaseResponse<>(user);
+    }
 }
