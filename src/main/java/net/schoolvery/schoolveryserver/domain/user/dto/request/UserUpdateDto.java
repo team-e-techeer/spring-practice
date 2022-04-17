@@ -10,7 +10,6 @@ public class UserUpdateDto {
 
     int id;
 
-    private String name;
     private String nickname;
 
 
