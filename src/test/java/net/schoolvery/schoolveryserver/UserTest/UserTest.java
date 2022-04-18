@@ -36,28 +36,26 @@ public class UserTest extends SpringTestSupport {
     @DisplayName("User Create Test")
     @Test
     void 유저생성_확인() throws Exception {
+        String user = mapper.writeValueAsString(new User(6,"김의빈", "Joe", 0104234, 1244,
+                "성결대", "asdads","adsadsasd"));
+
+
         mockMvc.perform(
                 post("/api/v1/users")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"name\": \"김의빈\", \"nickname\": \"Joe\", \"phone\" : 01042345," +
-                                " \"student_id\": 12421,\"school\": \"성결대\",\"email\": \"asdasd\",\"password\": \"12424\"}")
-        )
+                        .characterEncoding("utf-8")
+                        .content(user)
+                )
                 .andExpect(status().isOk())
-                .andDo(document("/",
-                        preprocessRequest(prettyPrint()),
-                        preprocessResponse(prettyPrint()),
-                        requestFields(
-                                fieldWithPath("name").description("name"),
-                                fieldWithPath("nickname").description("nickname"),
-                                fieldWithPath("phone").description("phone"),
-                                fieldWithPath("student_id").description("student_id"),
-                                fieldWithPath("school").description("school"),
-                                fieldWithPath("email").description("email"),
-                                fieldWithPath("password").description("password")
-                        ),
-                        responseFields(
-                                fieldWithPath("id").description("id")
-                        ))
+                .andDo(
+                        restDocs.document(
+                                responseFields(
+                                        fieldWithPath("isSuccess").description("isSuccess"),
+                                        fieldWithPath("code").description("code"),
+                                        fieldWithPath("message").description("message"),
+                                        subsectionWithPath("result").description("result")
+                                )
+                        )
                 );
     }
 
