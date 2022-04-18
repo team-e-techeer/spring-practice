@@ -1,32 +1,15 @@
 package net.schoolvery.schoolveryserver.UserTest;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import net.schoolvery.schoolveryserver.SpringTestSupport;
-import net.schoolvery.schoolveryserver.domain.user.controller.UserController;
-import net.schoolvery.schoolveryserver.domain.user.dto.request.UserCreateDto;
 import net.schoolvery.schoolveryserver.domain.user.entity.User;
-import net.schoolvery.schoolveryserver.domain.user.service.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
-import org.springframework.restdocs.payload.JsonFieldType;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
 
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import org.springframework.http.MediaType;
+
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
-import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @DisplayName("User 단위 테스트")
