@@ -1,0 +1,72 @@
+[source,options="nowrap"]
+----
+{
+  "isSuccess" : true,
+  "code" : 1000,
+  "message" : "요청에 성공하였습니다.",
+  "result" : [ {
+    "id" : 2,
+    "name" : "dfssd4f",
+    "nickname" : "asda4sdg2",
+    "phone" : 1232414,
+    "student_id" : 143245463,
+    "school" : "성결대학교2",
+    "email" : "asdas@naver.com2",
+    "password" : "1235325"
+  }, {
+    "id" : 4,
+    "name" : "dfss21412",
+    "nickname" : null,
+    "phone" : 124414,
+    "student_id" : 14124463,
+    "school" : "성결대학교3",
+    "email" : "asdas@naver.com3",
+    "password" : "1124325"
+  }, {
+    "id" : 5,
+    "name" : "김의빈",
+    "nickname" : "Joe",
+    "phone" : 34972,
+    "student_id" : 1244,
+    "school" : "성결대",
+    "email" : "asdads",
+    "password" : "adsadsasd"
+  }, {
+    "id" : 6,
+    "name" : "김의빈",
+    "nickname" : "Joe",
+    "phone" : 34972,
+    "student_id" : 1244,
+    "school" : "성결대",
+    "email" : "asdads",
+    "password" : "adsadsasd"
+  }, {
+    "id" : 7,
+    "name" : "김의빈",
+    "nickname" : "Joe",
+    "phone" : 34972,
+    "student_id" : 1244,
+    "school" : "성결대",
+    "email" : "asdads",
+    "password" : "adsadsasd"
+  }, {
+    "id" : 8,
+    "name" : "김의빈",
+    "nickname" : "Joe",
+    "phone" : 34972,
+    "student_id" : 1244,
+    "school" : "성결대",
+    "email" : "asdads",
+    "password" : "adsadsasd"
+  }, {
+    "id" : 9,
+    "name" : "김의빈",
+    "nickname" : "Joe",
+    "phone" : 34972,
+    "student_id" : 1244,
+    "school" : "성결대",
+    "email" : "asdads",
+    "password" : "adsadsasd"
+  } ]
+}
+----
