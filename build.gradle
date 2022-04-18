@@ -11,24 +11,25 @@ sourceCompatibility = '11'
 
 // snippetsDir 설정하기
 ext {
-	snippetsDir = file('build/generated-snippets')
+	snippetsDir = file('build/generated-snippets')	//(3) 빌드시 snippets 파일들이 저장될 저장소
 }
 
-// bootjar 설정하기
-bootJar {
-	dependsOn asciidoctor
-	copy {
-		from "${asciidoctor.outputDir}"
-		into 'BOOT-INF/classes/static/docs'
-	}
-	finalizedBy 'copyDocument'
-}
 
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
 }
+
+// bootjar 설정하기
+bootJar {	//(7) bootJar 시 asciidoctor 종속되고 build하위 스니펫츠 파일을 classes 하위로 복사
+	dependsOn asciidoctor
+	copy {
+		from "${asciidoctor.outputDir}"
+		into 'BOOT-INF/classes/static/docs'
+	}
+}
+
 
 repositories {
 	mavenCentral()
@@ -59,27 +60,34 @@ dependencies {
 
 
 // asciidoctor 설정
-asciidoctor {
+asciidoctor {	//(5) asccidoctor 설정
 	dependsOn test
 	inputs.dir snippetsDir
 }
 
-asciidoctor.doFirst {
+asciidoctor.doFirst {	//(6) asciidoctor가 실행될 때 docs 하위 파일 삭제
 	delete file('src/main/resources/static/docs')
 }
 
-task copyDocument(type: Copy) {
+task copyDocument(type: Copy) {		//(8) from의 파일을 into로 복사
 	dependsOn asciidoctor
-	from file("build/docs/asciidoc")
+	from file("build/generated-snippets/user-test")
 	into file("src/main/resources/static/docs")
 }
 
 test {
 	useJUnitPlatform()
+	outputs.dir snippetsDir	//(4) test 실행 시 파일을 (3)에서 설정한 저장소에 출력하도록 설정
 }
 
+jar {
+	dependsOn asciidoctor
+	from ("${asciidoctor.outputDir}/html5") {
+		into 'static/docs'
+	}
+}
 
-build {
+build {		//(9) build 시 copyDocument 실행
 	dependsOn copyDocument
 }
 
