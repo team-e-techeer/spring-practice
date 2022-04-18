@@ -1,0 +1,40 @@
+
+ifndef::snippets[]
+:snippets: ./build/generated-snippets/user-test/유저_읽기
+endif::[]
+
+= User REST docs 템플릿 (User Read )
+:toc: left
+:toclevels: 4
+:toc-title: User API
+
+== User Read
+
+=== curl-request
+
+include::{snippets}/user-test/유저_읽기/curl-request.adoc[]
+
+=== Http request
+
+include::{snippets}/user-test/유저_읽기/http-request.adoc[]
+
+=== Http RESPONSE
+
+include::{snippets}/user-test/유저_읽기/http-response.adoc[]
+
+=== httpie request
+
+include::{snippets}/user-test/유저_읽기/httpie-request.adoc[]
+
+=== request-body
+
+include::{snippets}/user-test/유저_읽기/request-body.adoc[]
+
+=== response-body
+
+include::{snippets}/user-test/유저_읽기/response-body.adoc[]
+
+=== response-fields
+
+include::{snippets}/user-test/유저_읽기/response-fields.adoc[]
+
