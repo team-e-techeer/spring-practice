@@ -9,16 +9,6 @@ group = 'net.schoolvery'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
-
-repositories {
-	mavenCentral()
-}
-
 // snippetsDir 설정하기
 ext {
 	snippetsDir = file('build/generated-snippets')
@@ -31,28 +21,19 @@ bootJar {
 		from "${asciidoctor.outputDir}"
 		into 'BOOT-INF/classes/static/docs'
 	}
+	finalizedBy 'copyDocument'
 }
 
-// asciidoctor 설정
-asciidoctor {
-	dependsOn test
-	inputs.dir snippetsDir
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
 }
 
-
-asciidoctor.doFirst {
-	delete file('src/main/resources/static/docs')
+repositories {
+	mavenCentral()
 }
 
-task copyDocument(type: Copy) {
-	dependsOn asciidoctor
-	from file("build/docs/asciidoc")
-	into file("src/main/resources/static/docs")
-}
-
-build {
-	dependsOn copyDocument
-}
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -76,6 +57,38 @@ dependencies {
 
 }
 
+
+// asciidoctor 설정
+asciidoctor {
+	dependsOn test
+	inputs.dir snippetsDir
+}
+
+asciidoctor.doFirst {
+	delete file('src/main/resources/static/docs')
+}
+
+task copyDocument(type: Copy) {
+	dependsOn asciidoctor
+	from file("build/docs/asciidoc")
+	into file("src/main/resources/static/docs")
+}
+
+test {
+	useJUnitPlatform()
+}
+
+
+build {
+	dependsOn copyDocument
+}
+
+
+
+
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+
