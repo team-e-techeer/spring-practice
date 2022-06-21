@@ -1,0 +1,40 @@
+
+ifndef::snippets[]
+:snippets: ./build/generated-snippets/user-test/유저생성_확인
+endif::[]
+
+= User REST docs 템플릿 ( Create User )
+:toc: left
+:toclevels: 4
+:toc-title: User API
+
+== Create User
+
+=== curl-request
+
+include::{snippets}/user-test/유저생성_확인/curl-request.adoc[]
+
+=== Http request
+
+include::{snippets}/user-test/유저생성_확인/http-request.adoc[]
+
+=== Http RESPONSE
+
+include::{snippets}/user-test/유저생성_확인/http-response.adoc[]
+
+=== httpie request
+
+include::{snippets}/user-test/유저생성_확인/httpie-request.adoc[]
+
+=== request-body
+
+include::{snippets}/user-test/유저생성_확인/request-body.adoc[]
+
+=== response-body
+
+include::{snippets}/user-test/유저생성_확인/response-body.adoc[]
+
+=== response-fields
+
+include::{snippets}/user-test/유저생성_확인/response-fields.adoc[]
+

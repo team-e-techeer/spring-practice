@@ -1,0 +1,13 @@
+[source,options="nowrap"]
+----
+{
+  "id" : 6,
+  "name" : "김의빈",
+  "nickname" : "Joe",
+  "phone" : 34972,
+  "student_id" : 1244,
+  "school" : "성결대",
+  "email" : "asdads",
+  "password" : "adsadsasd"
+}
+----

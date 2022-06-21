@@ -1,15 +1,13 @@
-package net.schoolvery.schoolveryserver.domain.user.entity;
+package net.schoolvery.schoolveryserver.domain.user.dto.response;
 
-import lombok.*;
-import javax.persistence.*;
-import java.util.UUID;
-
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class User {
+public class GetUserResponseDto {
 
     private int id ;
 
@@ -20,6 +18,4 @@ public class User {
     private String school;
     private String email;
     private String password;
-
-
 }

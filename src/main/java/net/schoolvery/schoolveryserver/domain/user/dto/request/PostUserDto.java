@@ -4,11 +4,10 @@ import lombok.*;
 
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class UserUpdateDto {
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class PostUserDto {
 
-    private int id;
     private String nickname;
 
 }
